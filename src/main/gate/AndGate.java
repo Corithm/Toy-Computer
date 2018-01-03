@@ -10,7 +10,7 @@ public class AndGate extends Gate {
     public AndGate()
     {
         nand = new NandGate();
-        not = new NotGate();
+        not  = new NotGate();
     }
 
     /**
