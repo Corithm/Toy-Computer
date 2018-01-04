@@ -1,23 +1,21 @@
 package main.gate;
 
 /**
- * Implements a not -gate with nand -gate.
+ * Implements 'NOT' -gate.
  *
- * Output values: 0 xor 1.
+ * == REFERENCE ==
+ * @see <a href="https://en.wikipedia.org/wiki/NAND_logic#NOT">REFERENCE</a>
  */
-public class NotGate extends Gate
+public class NotGate
 {
-    private NandGate nand;
-
-    public NotGate() { nand = new NandGate(); }
+    private boolean out;
 
     /**
      * Sets an output value.
      *
-     * @param a the input value.
+     * @param a the input
      */
-    public void in(boolean a) {
-        nand.in(a, a);
-        out = nand.out();
-    }
+    public void in(boolean a) { out = !a; }
+
+    public boolean out() { return out; }
 }

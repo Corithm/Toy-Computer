@@ -32,7 +32,7 @@ public class LogicTest
         and.in(true, true);
         results[3] = and.out();
 
-        if (results[0] == results[1] == results[2] == false && results[3])
+        if (!(results[0] == results[1] == results[2]) && results[3])
             System.out.println("[X] and -gate");
         else
             System.out.println("[ ] and -gate");
@@ -58,7 +58,7 @@ public class LogicTest
         not.in(false);
         boolean val2 = not.out();
 
-        if (val1 == false && val2 == true)
+        if (!val1 && val2)
             System.out.println("[X] not -gate");
         else
             System.out.println("[ ] not -gate");

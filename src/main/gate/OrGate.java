@@ -1,9 +1,9 @@
 package main.gate;
 
 /**
- * Implemens or gate with three nand gates.
+ * Implemens 'OR'-gate.
  *
- * Output values: 0 0 0 1.
+ * <a href="https://en.wikipedia.org/wiki/NAND_logic#OR">REFRENCE</a>
  */
 public class OrGate extends Gate
 {
@@ -18,12 +18,8 @@ public class OrGate extends Gate
         nand = new NandGate();
     }
 
-    /**
-     * Sets an output value.
-     *
-     * @param a
-     * @param b
-     */
+    /** @inheritDoc */
+    @Override
     public void in(boolean a, boolean b)
     {
         nand1.in(a, a);

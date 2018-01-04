@@ -1,9 +1,9 @@
 package main.gate;
 
 /**
- * Implements an Xor gate with four nand gates.
+ * Implements 'XOR'-gate.
  *
- * Output values: 0 1 1 0
+ * <a href="https://en.wikipedia.org/wiki/NAND_logic#XOR">REFERENCE</a>
  */
 public class XorGate extends Gate
 {
@@ -20,6 +20,8 @@ public class XorGate extends Gate
         nand4 = new NandGate();
     }
 
+    /** @inheritDoc */
+    @Override
     public void in(boolean a, boolean b)
     {
         nand1.in(a, b);

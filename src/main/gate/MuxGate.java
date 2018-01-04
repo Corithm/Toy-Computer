@@ -1,11 +1,18 @@
 package main.gate;
 
+/**
+ * Implements 'MUX'-gate.
+ *
+ * <a href="https://en.wikipedia.org/wiki/NAND_logic#MUX">REFERENCE</a>
+ */
 public class MuxGate
 {
     private AndGate and1;
     private AndGate and2;
     private NotGate not;
     private OrGate or;
+
+    private boolean out;
 
     public MuxGate()
     {
@@ -16,6 +23,7 @@ public class MuxGate
     }
 
     /**
+     * Sets an output value.
      *
      * @param a the first input
      * @param b the second input
@@ -28,5 +36,8 @@ public class MuxGate
         and2.in(b, s);
 
         or.in(and1.out(), and2.out());
+        out = or.out();
     }
+
+    public boolean out() { return out; }
 }

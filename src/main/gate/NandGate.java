@@ -1,17 +1,13 @@
 package main.gate;
 
 /**
- * Primitive gate, that is used for building other gates.
+ * Implements 'NAND'-gate.
  *
- * Output values: 1 | 1 | 1 | 0
+ * <a href="https://en.wikipedia.org/wiki/NAND_logic#NAND">REFERENCE</a>
  */
 public class NandGate extends Gate
 {
-    /**
-     * Sets an output value.
-     *
-     * @param a the first input
-     * @param b the second input
-     */
+    /** @inheritDoc */
+    @Override
     public void in(boolean a, boolean b) { out = !(a && b); }
 }

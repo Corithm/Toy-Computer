@@ -12,4 +12,13 @@ public abstract class Gate {
      * @return output value
      */
     public boolean out() { return out; }
+
+    /**
+     * Sets an output value.
+     *
+     * @param a the first input
+     * @param b the second input
+     */
+    public abstract void in(boolean a, boolean b);
+
 }

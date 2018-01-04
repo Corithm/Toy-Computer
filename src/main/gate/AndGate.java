@@ -1,9 +1,12 @@
 package main.gate;
 
 /**
- * Implements an and -gate with nand and not gates.
+ * Implements 'AND'-gate.
+ *
+ * <a href="https://en.wikipedia.org/wiki/NAND_logic#AND">REFERENCE</a>
  */
-public class AndGate extends Gate {
+public class AndGate extends Gate
+{
     private NandGate nand;
     private NotGate not;
 
@@ -13,13 +16,10 @@ public class AndGate extends Gate {
         not  = new NotGate();
     }
 
-    /**
-     * Sets an input value.
-     *
-     * @param a the first value.
-     * @param b the second value.
-     */
-    public void in(boolean a, boolean b) {
+    /** @inheritDoc */
+    @Override
+    public void in(boolean a, boolean b)
+    {
         nand.in(a, b);
         not.in(nand.out());
 

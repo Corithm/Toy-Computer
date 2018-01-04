@@ -1,9 +1,9 @@
 package main.gate;
 
 /**
- * Implements a nor gate with a not and a or gate.
+ * Implements a 'NOR'-gate.
  *
- * Output values: 1 0 0 0
+ * <a href="https://en.wikipedia.org/wiki/NAND_logic#NOR">REFERENCE</a>
  */
 public class NorGate extends Gate
 {
@@ -16,6 +16,8 @@ public class NorGate extends Gate
         or  = new OrGate();
     }
 
+    /** @inheritDoc */
+    @Override
     public void in(boolean a, boolean b)
     {
         or.in(a, b);
