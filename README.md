@@ -2,9 +2,9 @@
 This is an exercise project of building a virtual computer from scratch.
 
 ## LICENSE
-Every file included here is public domain (see [The Unlicense](https://choosealicense.com/licenses/unlicense/))
-Though I do spend a lot of time on this project, I have not designed, discovered or invented any of the technical concepts
-implemented here. Therefore, I will not claim any rights to this project.
+Every file included here is public domain (see [The Unlicense](https://choosealicense.com/licenses/unlicense/)).
+Though I do spend a lot of time on this project, I have not designed, discovered or invented any of the technical concepts implemented here.
+Therefore, I will not claim any rights to this project.
 
 # REFERENCES
 More accurate reference are included in javadoc comments.
