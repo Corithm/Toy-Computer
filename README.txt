@@ -7,3 +7,4 @@ Building a Modern Computer from First Principles (see http://nand2tetris.org/boo
 
 ## LICENSE
 Every file is licensed under MIT License.
+Note that I have not invented any of these concepts neither do I own any patents.
