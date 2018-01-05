@@ -1,4 +1,4 @@
-package main.gate;
+package main.hardware.gate;
 
 /**
  * Implemens 'OR'-gate.

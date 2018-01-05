@@ -1,4 +1,4 @@
-package main.chip;
+package main.hardware.chip;
 
 public abstract class Adder
 {

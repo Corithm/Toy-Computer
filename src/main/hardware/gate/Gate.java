@@ -1,4 +1,4 @@
-package main.gate;
+package main.hardware.gate;
 
 /**
  * A gate supertype that every gates inherits.

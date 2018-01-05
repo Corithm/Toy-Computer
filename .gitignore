@@ -1,4 +1,5 @@
+docs/
 .idea/
 *.iml
+lib/
 out/
-docs/

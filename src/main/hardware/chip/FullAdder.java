@@ -1,8 +1,8 @@
-package main.chip;
+package main.hardware.chip;
 
-import main.gate.AndGate;
-import main.gate.OrGate;
-import main.gate.XorGate;
+import main.hardware.gate.AndGate;
+import main.hardware.gate.OrGate;
+import main.hardware.gate.XorGate;
 
 /**
  * Implements 'FULL-ADDER'.

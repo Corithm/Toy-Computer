@@ -1,4 +1,4 @@
-package main.chip;
+package main.hardware.chip;
 
 /**
  * Implements '4-bit adder'.
