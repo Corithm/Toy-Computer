@@ -7,14 +7,13 @@ package main.hardware.gate;
  */
 public class NorGate extends Gate
 {
-    private NotGate not;
-    private OrGate or;
+    private NotGate not = new NotGate();
+    private OrGate or = new OrGate();
 
-    public NorGate()
-    {
-        not = new NotGate();
-        or  = new OrGate();
-    }
+    /**
+     * Sets the output value to true (0 NOR 0 = 1).
+     */
+    public NorGate() { out = true; }
 
     /** @inheritDoc */
     @Override

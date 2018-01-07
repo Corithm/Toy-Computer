@@ -7,28 +7,26 @@ package main.hardware.gate;
  */
 public class XorGate extends Gate
 {
-    private NandGate nand1;
-    private NandGate nand2;
-    private NandGate nand3;
-    private NandGate nand4;
+    private NandGate[] nand = new NandGate[4];
 
+    /**
+     * Sets the output value to false (0 XOR 0 = 0)
+     */
     public XorGate()
     {
-        nand1 = new NandGate();
-        nand2 = new NandGate();
-        nand3 = new NandGate();
-        nand4 = new NandGate();
+        for (int i = 0; i < 4; i++) { nand[i] = new NandGate(); }
+        out = false;
     }
 
     /** @inheritDoc */
     @Override
     public void in(boolean a, boolean b)
     {
-        nand1.in(a, b);
-        nand2.in(a, nand1.out());
-        nand3.in(nand1.out(), b);
-        nand4.in(nand2.out(), nand3.out());
+        nand[1].in(a, b);
+        nand[2].in(a, nand[1].out());
+        nand[3].in(nand[1].out(), b);
+        nand[4].in(nand[2].out(), nand[3].out());
 
-        out = nand4.out();
+        out = nand[4].out();
     }
 }

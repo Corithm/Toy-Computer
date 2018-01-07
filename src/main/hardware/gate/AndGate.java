@@ -7,14 +7,13 @@ package main.hardware.gate;
  */
 public class AndGate extends Gate
 {
-    private NandGate nand;
-    private NotGate not;
+    private NandGate nand = new NandGate();
+    private NotGate not = new NotGate();
 
-    public AndGate()
-    {
-        nand = new NandGate();
-        not  = new NotGate();
-    }
+    /**
+     * Sets an initial output value to false (0 AND 0 = 0).
+     */
+    public AndGate() { out = false; }
 
     /** @inheritDoc */
     @Override

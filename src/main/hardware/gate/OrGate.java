@@ -7,25 +7,25 @@ package main.hardware.gate;
  */
 public class OrGate extends Gate
 {
-    private NandGate nand1;
-    private NandGate nand2;
-    private NandGate nand;
+    private NandGate[] nand = new NandGate[3];
 
+    /**
+     * Sets the output value to false (0 OR 0 = 0)
+     */
     public OrGate()
     {
-        nand1 = new NandGate();
-        nand2 = new NandGate();
-        nand = new NandGate();
+        for (int i = 0; i < 3; i++) { nand[i] = new NandGate(); }
+        out = false;
     }
 
     /** @inheritDoc */
     @Override
     public void in(boolean a, boolean b)
     {
-        nand1.in(a, a);
-        nand2.in(b, b);
-        nand.in(nand1.out(), nand2.out());
+        nand[1].in(a, a);
+        nand[2].in(b, b);
+        nand[3].in(nand[1].out(), nand[2].out());
 
-        out = nand.out();
+        out = nand[3].out();
     }
 }
