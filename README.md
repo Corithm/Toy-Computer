@@ -1,4 +1,4 @@
-#Computer Simulator (Toy Computer)
+# Toy Computer (Computer Simulator)
 This is an exercise project of building a virtual computer from scratch.
 
 ## LICENSE

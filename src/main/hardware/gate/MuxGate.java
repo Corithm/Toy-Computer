@@ -7,19 +7,15 @@ package main.hardware.gate;
  */
 public class MuxGate
 {
-    private AndGate and1;
-    private AndGate and2;
-    private NotGate not;
-    private OrGate or;
+    private AndGate[] and = new AndGate[2];
+    private NotGate not   = new NotGate();
+    private OrGate or     = new OrGate();
 
     private boolean out;
 
     public MuxGate()
     {
-        and1 = new AndGate();
-        and2 = new AndGate();
-        not  = new NotGate();
-        or   = new OrGate();
+        for (int i = 0; i < and.length; i++) { and[i] = new AndGate(); }
     }
 
     /**
@@ -32,10 +28,10 @@ public class MuxGate
     public void in(boolean a, boolean b, boolean s)
     {
         not.in(s);
-        and1.in(a, not.out());
-        and2.in(b, s);
+        and[1].in(a, not.out());
+        and[2].in(b, s);
 
-        or.in(and1.out(), and2.out());
+        or.in(and[1].out(), and[2].out());
         out = or.out();
     }
 
