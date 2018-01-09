@@ -7,14 +7,12 @@ import main.hardware.chip.register.Register;
  *
  * The Elements of Computing Systems p. 49
  */
-public class RAM8 extends RAM
+public class RAM8 implements RAM
 {
     private Register[] register = new Register[8];
 
     public RAM8()
     {
-        out = new boolean[8];
-
         for (int i = 0; i < register.length; i++)
         {
             register[i] = new Register();
@@ -29,14 +27,14 @@ public class RAM8 extends RAM
     {
         // Could use DMux8Way, but it seems like I would need 12 of them.
         // So, lets save at runtime memory and effort.
-        String input = "";
+        String address = "";
         for (boolean x : a)
         {
-            if (x) input += 1;
-            else   input += 0;
+            if (x) address += 1;
+            else   address += 0;
         }
 
-        switch (input)
+        switch (address)
         {
             case "000":
                 register[0].in(a, load); break;
@@ -59,14 +57,14 @@ public class RAM8 extends RAM
 
     public boolean[] out(boolean[] address)
     {
-        String input = "";
+        String a = "";
         for (boolean x : address)
         {
-            if (x) input += 1;
-            else   input += 0;
+            if (x) a += 1;
+            else   a += 0;
         }
 
-        switch (input)
+        switch (a)
         {
             case "000": return register[0].out();
             case "001": return register[1].out();

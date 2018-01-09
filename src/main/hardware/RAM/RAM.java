@@ -4,13 +4,21 @@ package main.hardware.RAM;
  *
  * The Elements of Computing Systems p. 49
  */
-public abstract class RAM
+public interface RAM
 {
-    protected boolean[] out;
+    /**
+     * Sets the output value.
+     *
+     * @param i index
+     * @param a address
+     * @param load the value, false means not load.
+     */
+    void in(boolean[] i, boolean[] a, boolean load);
 
-    public abstract void in(boolean[] a,
-                            boolean[] address,
-                            boolean load);
-
-    public boolean[] out() { return out; }
+    /**
+     * Returns the output value.
+     *
+     * @param address the location of information.
+     */
+    boolean[] out(boolean[] address);
 }
