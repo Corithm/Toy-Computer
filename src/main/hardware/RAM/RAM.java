@@ -18,7 +18,7 @@ public interface RAM
     /**
      * Returns the output value.
      *
-     * @param address the location of information.
+     * @param a address
      */
-    boolean[] out(boolean[] address);
+    boolean[] out(boolean[] a);
 }

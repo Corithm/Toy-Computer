@@ -22,15 +22,15 @@ public class RAM64 implements RAM
     public void in(boolean[] i, boolean[] a, boolean load)
     {
         // The first three.
-        String address= "";
+        StringBuilder address= new StringBuilder();
         for (int j = 0; j < 3; j++)
         {
-            if (a[j]) address += 1;
-            else      address += 0;
+            if (a[j]) address.append(1);
+            else      address.append(0);
         }
 
-        boolean[] a2 = {a[3], a[4], a[5]};
-        switch (address)
+        boolean[] a2 = Arrays.copyOfRange(a, 3, 5);
+        switch (address.toString())
         {
             case "000":
                 ram8[0].in(i, a2, load); break;
@@ -53,16 +53,16 @@ public class RAM64 implements RAM
 
     /** @inheritDoc */
     @Override
-    public boolean[] out(boolean[] address) {
-        String a = "";
-        for (boolean x : address)
+    public boolean[] out(boolean[] a) {
+        StringBuilder address = new StringBuilder();
+        for (boolean x : a)
         {
-            if (x) a += 1;
-            else   a += 0;
+            if (x) address.append(1);
+            else   address.append(0);
         }
 
-        boolean[] a2 = Arrays.copyOfRange(address, 3, 5);
-        switch (a)
+        boolean[] a2 = Arrays.copyOfRange(a, 3, 5);
+        switch (address.toString())
         {
             case "000": return ram8[0].out(a2);
             case "001": return ram8[1].out(a2);

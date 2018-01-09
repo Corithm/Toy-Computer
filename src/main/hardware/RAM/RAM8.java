@@ -27,14 +27,14 @@ public class RAM8 implements RAM
     {
         // Could use DMux8Way, but it seems like I would need 12 of them.
         // So, lets save at runtime memory and effort.
-        String address = "";
+        StringBuilder address = new StringBuilder();
         for (boolean x : a)
         {
-            if (x) address += 1;
-            else   address += 0;
+            if (x) address.append(1);
+            else   address.append(0);
         }
 
-        switch (address)
+        switch (address.toString())
         {
             case "000":
                 register[0].in(a, load); break;
@@ -55,16 +55,17 @@ public class RAM8 implements RAM
         }
     }
 
-    public boolean[] out(boolean[] address)
+    /** @inheritDoc */
+    public boolean[] out(boolean[] a)
     {
-        String a = "";
-        for (boolean x : address)
+        StringBuilder address = new StringBuilder();
+        for (boolean x : a)
         {
-            if (x) a += 1;
-            else   a += 0;
+            if (x) address.append(1);
+            else   address.append(0);
         }
 
-        switch (a)
+        switch (address.toString())
         {
             case "000": return register[0].out();
             case "001": return register[1].out();
