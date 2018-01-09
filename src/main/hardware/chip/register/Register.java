@@ -1,7 +1,5 @@
 package main.hardware.chip.register;
 
-import main.hardware.gate.MuxGate;
-
 /**
  * Register implementation.
  *
@@ -12,7 +10,7 @@ public class Register
     private BinaryCell[] bit = new BinaryCell[16];
     private boolean[] out = new boolean[16];
 
-    public Register(int bits)
+    public Register()
     {
         for (int i = 0; i < bit.length; i++) { bit[i] = new BinaryCell(); }
     }
