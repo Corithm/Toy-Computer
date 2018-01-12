@@ -1,5 +1,5 @@
-import main.hardware.gate.AndGate;
-import main.hardware.gate.NotGate;
+import main.hardware.chip.elementary.AndGate;
+import main.hardware.chip.elementary.NotGate;
 
 public class LogicTest
 {

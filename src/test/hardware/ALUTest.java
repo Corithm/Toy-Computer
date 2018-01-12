@@ -1,6 +1,6 @@
 package hardware;
 
-import main.hardware.chip.ALU;
+import main.hardware.chip.combinational.ALU;
 
 public class ALUTest
 {

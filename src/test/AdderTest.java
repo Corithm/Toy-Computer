@@ -1,4 +1,4 @@
-import main.hardware.chip.HalfAdder;
+import main.hardware.chip.combinational.HalfAdder;
 
 public class AdderTest
 {
