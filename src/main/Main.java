@@ -12,9 +12,9 @@ import javafx.stage.Stage;
  */
 public class Main extends Application
 {
-    public static Computer computer = new Computer();
-    public static Screen screen = new Screen();
-
+    private static Computer computer = new Computer();
+    private static Screen screen = new Screen();
+    private static Keyboard keyboard = new Keyboard();
 
     @Override
     public void start(Stage frame)
@@ -22,8 +22,10 @@ public class Main extends Application
         try
         {
             Group root = new Group(screen);
-            frame.setScene(new Scene(root));
+            Scene env = new Scene(root);
+            frame.setScene(env);
             computer.connect(screen);
+            keyboard.set(env);
 
             frame.show();
             computer.boot();
