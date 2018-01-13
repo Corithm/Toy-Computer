@@ -3,7 +3,6 @@ package main;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -23,7 +22,8 @@ public class Main extends Application
         try
         {
             Group root = new Group(screen);
-            frame.setScene(new Scene(root, Color.BLACK));
+            frame.setScene(new Scene(root));
+            computer.connect(screen);
 
             frame.show();
             computer.boot();

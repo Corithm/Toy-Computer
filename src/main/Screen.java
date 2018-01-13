@@ -4,7 +4,7 @@ import javafx.scene.canvas.Canvas;
 
 /**
  * Screen implementation with JavaFX.
- * We will follow the book specs for now, later we will add some colors.
+ * We will follow the book specs for now, later we will add some colors
  */
 public class Screen extends Canvas
 {

@@ -2,7 +2,8 @@ package main.hardware.chip.sequential.RAM;
 
 import java.util.Arrays;
 
-public class RAM16K {
+public class RAM16K
+{
     private RAM4K[] ram4k = new RAM4K[4];
 
     public RAM16K()

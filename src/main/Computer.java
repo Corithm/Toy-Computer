@@ -2,6 +2,7 @@ package main;
 
 import javafx.stage.Stage;
 import main.hardware.CPU;
+import main.hardware.GPU;
 
 /**
  * A 16-bit computer implementation.
@@ -10,6 +11,7 @@ import main.hardware.CPU;
 public class Computer
 {
     CPU cpu = new CPU();
+    GPU gpu = new GPU();
 
     //RAM16K ram = new RAM16K();
 
@@ -17,11 +19,18 @@ public class Computer
 
     public void boot()
     {
-
+        gpu.out();
     }
 
     public void shutDown()
     {
 
     }
+
+    /**
+     * Connects a computer to a display monitor.
+     *
+     * @param screen
+     */
+    public void connect(Screen screen) { gpu.connect(screen); }
 }
