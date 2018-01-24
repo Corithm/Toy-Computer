@@ -7,7 +7,7 @@ package main.assembler
 class Code()
 {
     /** @return the destination code */
-    fun dest(mnemonic: String) = when (mnemonic)
+    fun destCode(mnemonic: String) = when (mnemonic)
     {
         "null" -> "000"
         "M"    -> "001"
@@ -21,7 +21,7 @@ class Code()
     }
 
     /** @return the computation code */
-    fun comp(mnemonic: String) = when (mnemonic)
+    fun compCode(mnemonic: String) = when (mnemonic)
     {
     // FOR A = 0
         "0" -> "0 1010 10"
@@ -56,7 +56,7 @@ class Code()
     }
 
     /** @return the jump code */
-    fun jump(mnemonic: String) = when (mnemonic)
+    fun jumpCode(mnemonic: String) = when (mnemonic)
     {
         "null"-> "000"
         "JGT" -> "001"

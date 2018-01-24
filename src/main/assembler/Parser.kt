@@ -8,12 +8,13 @@ import java.io.FileReader
  *
  * p. 113 - 114
  */
-class Parser(var fileName: String)
+class Parser(fileName: String)
 {
-    private val reader: BufferedReader = BufferedReader(FileReader("$fileName.asm" ))
+    private val reader: BufferedReader = BufferedReader(FileReader(fileName))
 
-    private var currentCommand: String = ""
+    private var currentCommand: String? = null
 
+    val IGNORED: Int = 0
     val A_COMMAND: Int = 1
     val C_COMMAND: Int = 2
     val L_COMMAND: Int = 3
@@ -21,35 +22,39 @@ class Parser(var fileName: String)
     /**
      * Sets the next command.
      */
-    fun nextLine()
+    fun nextLine(): Boolean
     {
-        currentCommand = reader.readLine()
-        // TODO: REMOVE WHITESPACES AND COMMENTS
-        if (currentCommand == null) throw NoMoreCommandsException()
+        currentCommand = reader.readLine().trim(' ')
+
+        return currentCommand != null
     }
 
     /** @return the command type */
     fun commandType(): Int
     {
-        return when (currentCommand[0])
+        if (currentCommand!![0] == '/'&& currentCommand!![1] == '/')
         {
-            '@'  -> A_COMMAND
-            '('  -> L_COMMAND
-            else -> C_COMMAND
+            return IGNORED
+        }
+        else
+        {
+            return when (currentCommand!![0]) {
+                '@' -> A_COMMAND
+                '(' -> L_COMMAND
+                else -> C_COMMAND
+            }
         }
     }
 
     /** @return the symbol or decimal of A_COMMAND or L_COMMAND. */
-    fun symbol() = currentCommand.substring(1)
+    fun symbolMnemonic() = currentCommand!!.substring(1)
 
     /** @return the dest part of the code */
-    fun dest() = currentCommand.substringBefore('=')
+    fun destMnemonic() = currentCommand!!.substringBefore('=')
 
     /** @return the comp part of the code */
-    fun comp() = currentCommand.substringAfter('=').substringBefore(';')
+    fun compMnemonic() = currentCommand!!.substringAfter('=').substringBefore(';')
 
     /** @return the jump part of the code */
-    fun jump() = currentCommand.substringAfter(';')
+    fun jumpMnemonic() = currentCommand!!.substringAfter(';')
 }
-
-class NoMoreCommandsException  : Throwable()
