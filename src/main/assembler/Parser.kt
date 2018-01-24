@@ -46,8 +46,10 @@ class Parser(fileName: String)
         }
     }
 
+    fun close() { reader.close() }
+
     /** @return the symbol or decimal of A_COMMAND or L_COMMAND. */
-    fun symbolMnemonic() = currentCommand!!.substring(1)
+    fun symbolMnemonic() = currentCommand!!.substring(1).substringBefore(')')
 
     /** @return the dest part of the code */
     fun destMnemonic() = currentCommand!!.substringBefore('=')
