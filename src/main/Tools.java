@@ -49,7 +49,7 @@ public final class Tools
         String binString = Integer.toBinaryString(decNumber);
 
         // Add the leading zeroes.
-        for (int i = 0; i < 16 - binString.length(); i++)
+        for (int i = 1; i < 16 - binString.length(); i++)
         {
             result.append('0');
         }

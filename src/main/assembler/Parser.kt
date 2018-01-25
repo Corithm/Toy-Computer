@@ -24,7 +24,12 @@ class Parser(fileName: String)
      */
     fun nextLine(): Boolean
     {
-        currentCommand = reader.readLine().trim(' ')
+        currentCommand = reader.readLine()
+
+        if (currentCommand != null)
+        {
+            currentCommand = currentCommand!!.trim(' ')
+        }
 
         return currentCommand != null
     }
@@ -32,11 +37,11 @@ class Parser(fileName: String)
     /** @return the command type */
     fun commandType(): Int
     {
-        if (currentCommand!![0] == '/'&& currentCommand!![1] == '/')
+        if (currentCommand!!.length >= 2 && currentCommand!![0] == '/'&& currentCommand!![1] == '/')
         {
             return IGNORED
         }
-        else
+        else if (currentCommand!!.length > 0)
         {
             return when (currentCommand!![0]) {
                 '@' -> A_COMMAND
@@ -44,6 +49,8 @@ class Parser(fileName: String)
                 else -> C_COMMAND
             }
         }
+
+        return IGNORED
     }
 
     fun close() { reader.close() }
@@ -52,11 +59,23 @@ class Parser(fileName: String)
     fun symbolMnemonic() = currentCommand!!.substring(1).substringBefore(')')
 
     /** @return the dest part of the code */
-    fun destMnemonic() = currentCommand!!.substringBefore('=')
+    fun destMnemonic(): String
+    {
+        if (currentCommand!!.contains('='))
+            return currentCommand!!.substringBefore('=')
+        else
+            return "null"
+    }
 
     /** @return the comp part of the code */
     fun compMnemonic() = currentCommand!!.substringAfter('=').substringBefore(';')
 
     /** @return the jump part of the code */
-    fun jumpMnemonic() = currentCommand!!.substringAfter(';')
+    fun jumpMnemonic(): String {
+        if (currentCommand!!.contains(';'))
+        {
+            return currentCommand!!.substringAfter(';')
+        }
+        else return "null"
+    }
 }

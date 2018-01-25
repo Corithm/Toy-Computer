@@ -9,7 +9,7 @@ import java.io.FileWriter
  *
  * Based on The Elements of Computing Systems chapter 6
  */
-class Assember
+class Assembler
 {
     private val code = Code()
     private val symbols = SymbolTable()
@@ -83,9 +83,7 @@ class Assember
         val result = StringBuilder("0")
         val symbol = file.symbolMnemonic()
 
-        val isInt = symbol.toIntOrNull()
-
-        if (isInt != null)
+        if (symbol.toIntOrNull() != null)
         {
             result.append(
                     Tools.toBinaryString(symbol.toInt()))
@@ -101,10 +99,9 @@ class Assember
             }
             catch (e: Exception)
             {
-                nextAddress++
                 symbols.addEntry(symbol, nextAddress)
                 result.append(
-                        Tools.toBinaryString(nextAddress))
+                        Tools.toBinaryString(nextAddress++))
             }
         }
 
@@ -115,5 +112,6 @@ class Assember
     private fun writeLine(binaryCode: String)
     {
         writer!!.write(binaryCode)
+        writer!!.newLine()
     }
 }
