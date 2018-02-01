@@ -2,13 +2,17 @@
  * ...
  * For more information, please refer to <http://unlicense.org/>
  */
-package main;
+package main.tool;
+
+import main.hardware.chip.combinational.ALU;
 
 /**
  * Contains tools that aren't really possible in real life implementation.
  */
 public final class Tools
 {
+    public static ALU alu = new ALU();
+
     /**
      * Converts a String of binary code to boolean[].
      *

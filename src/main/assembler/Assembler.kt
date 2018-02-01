@@ -1,6 +1,6 @@
 package main.assembler
 
-import main.Tools
+import main.tool.Tools
 import java.io.BufferedWriter
 import java.io.FileWriter
 
