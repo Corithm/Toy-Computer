@@ -1,8 +1,9 @@
 package main;
 
-import javafx.stage.Stage;
 import main.hardware.CPU;
 import main.hardware.GPU;
+import main.hardware.Memory;
+import main.hardware.ROM32K;
 
 /**
  * A 16-bit computer implementation.
@@ -10,16 +11,37 @@ import main.hardware.GPU;
  */
 public class Computer
 {
-    CPU cpu = new CPU();
-    GPU gpu = new GPU();
+    private ROM32K rom = new ROM32K();
+    private CPU cpu = new CPU();
+    private Memory memory = new Memory();
 
-    //RAM16K ram = new RAM16K();
-
-    //ROM rom = new ROM();
+    // This is used for drawing to screen.
+    private GPU gpu = new GPU(memory);
 
     public void boot()
     {
-        gpu.out();
+        gpu.refresh();
+    }
+
+    public void run()
+    {
+        boolean on = true;
+        while (on)
+        {
+            /*cpu.input(
+                    memory.out(cpu.addressM()),
+                    rom.fetch(cpu.addressI()),
+                    false
+            );
+            memory.input(
+                    cpu.outM(),
+                    cpu.writeM(),
+                    cpu.addressM()
+            );
+            */
+            // Refresh screen.
+            gpu.refresh();
+        }
     }
 
     public void shutDown()

@@ -7,17 +7,24 @@ import main.hardware.chip.combinational.ALU;
  */
 public class Binary
 {
-    private final int WIDTH = 16;
-    private final boolean[] INCREMENT_CONTROL = { false, true, true, true, true, true };
-    private final boolean[] DECREMENT_CONTROL = { false, false, true, true, true, false };
+    private final int LENGTH = 16;
+    private final boolean[] INCREMENT_CONTROL = Tools.toBinary("01 1111");
+    private final boolean[] DECREMENT_CONTROL = Tools.toBinary("00 1110");
 
-    public boolean[] sequence = new boolean[WIDTH];
+    public boolean[] sequence = new boolean[LENGTH];
 
-    public Binary(String sequence) {
+    public Binary()
+    {
+        set("0000 0000 0000 0000");
+    }
+
+    public Binary(String sequence)
+    {
         set(sequence);
     }
 
-    public Binary(int integer) {
+    public Binary(int integer)
+    {
         set(Tools.toBinaryString(integer));
     }
 
@@ -28,11 +35,13 @@ public class Binary
      */
     public final void set(String sequence)
     {
-        for (int i = 0; i < WIDTH; i++)
+        sequence = sequence.trim();
+        for (int i = 0; i < LENGTH; i++)
         {
             this.sequence[i] = (sequence.charAt(i) == 1);
         }
     }
+
 
     public final void decrement() {
         Tools.alu.in(sequence, null, DECREMENT_CONTROL);

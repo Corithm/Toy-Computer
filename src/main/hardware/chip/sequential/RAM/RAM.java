@@ -9,7 +9,7 @@ public interface RAM
     /**
      * Sets the output value.
      *
-     * @param i index
+     * @param i indexz
      * @param a address
      * @param load the value, false means not load.
      */

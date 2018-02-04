@@ -22,7 +22,7 @@ public class PC
         }
         else if (inc)
         {
-            incrementer.input(in);
+            incrementer.input(out);
             out = incrementer.output();
         }
     }

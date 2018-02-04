@@ -1,6 +1,6 @@
 package main.hardware;
 
-import main.tool.Binary;
+import main.hardware.chip.combinational.Inc16Bit;
 import main.tool.Tools;
 
 import java.io.BufferedReader;
@@ -27,26 +27,23 @@ public class ROM32K
         }
     }
 
-    public boolean[] fetch(boolean[] address)
-    {
-        return memory.get(address);
-    }
+    public boolean[] fetch(boolean[] address) { return memory.get(address); }
 
     // Read the file and put them into memory.
     private void preload()
     {
-        Binary address = new Binary();
+        boolean[] address = new boolean[16];
+        Inc16Bit inc = new Inc16Bit();
 
         try
         {
             String line = input.readLine();
             while (line != null)
             {
-                memory.put(
-                        address.sequence,
-                        Tools.toBinary(line)
-                );
-                address.increment();
+                memory.put(address, Tools.toBinary(line));
+
+                inc.input(address);
+                address = inc.output();
 
                 line = input.readLine();
             }

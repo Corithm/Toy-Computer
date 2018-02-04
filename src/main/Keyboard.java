@@ -66,5 +66,5 @@ public class Keyboard
         System.out.println("Typed: " + code);
     }
 
-    private boolean[] convert(String code) { return Tools.toBinary(code, 16); }
+    private boolean[] convert(String code) { return Tools.toBinary(code); }
 }

@@ -20,7 +20,6 @@ public class RAM8 implements RAM
     }
 
     /** @inheritDoc */
-    @Override
     public void in(boolean[] i, // input
                    boolean[] a, // address
                    boolean load)

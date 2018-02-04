@@ -1,5 +1,7 @@
 package main.hardware.chip.sequential.RAM;
 
+import main.tool.Binary;
+
 import java.util.Arrays;
 
 public class RAM4K implements RAM
@@ -18,7 +20,7 @@ public class RAM4K implements RAM
     public void in(boolean[] i, boolean[] a, boolean load)
     {
         // The first three.
-        StringBuilder address= new StringBuilder();
+        StringBuilder address = new StringBuilder();
         for (int j = 0; j < 3; j++)
         {
             if (a[j]) address.append(1);

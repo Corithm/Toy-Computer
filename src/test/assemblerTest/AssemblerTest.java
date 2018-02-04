@@ -7,9 +7,9 @@ import main.assembler.Assembler;
  */
 public class AssemblerTest
 {
-    public static void main(String args)
+    public static void main(String[] args)
     {
         Assembler assembler = new Assembler();
-        assembler.compile("asmTest.asm");
+        assembler.assemble("src/test/assemblerTest/asmTest");
     }
 }

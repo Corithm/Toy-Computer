@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
 import main.Screen;
+import main.tool.Tools;
 
 
 /**
@@ -14,37 +15,52 @@ import main.Screen;
  */
 public class GPU
 {
-    // SHORTCUT normally would use RAM8K, but the reading method wouldn't feel efficient
-    private boolean[][][] ram = new boolean[256][32][];
+    // Only access to 16 384 - 24575.
+    // 00100 0000 0000 0000 to 0101 1111 1111 1111
+    private Memory memory;
 
     private GraphicsContext gc;
     private PixelWriter writer;
 
+    public GPU(Memory memory) { this.memory = memory; }
     /**
      * Reads every value from ram and draws them to the screen.
      */
-    public void out()
+    public void refresh()
     {
-        for (int y = 0; y < ram[0].length; y++)
+        int y = 0;
+        int x = 0;
+
+        for (int i = 16384; i < 24576; i++)
         {
-            for (int x = 0; x < ram[0][0].length; x++)
+            boolean[] slice = memory.out(Tools.toBinaryString(i));
+
+            if (slice != null)
             {
-                for (int z = 0; z < ram.length; z++)
+                for (int j = 0; j < 16; j++)
                 {
-                    if (ram[y][x][z])
-                        writer.setColor(y, x, Color.BLACK);
+                    if (slice[j])
+                        writer.setColor(x, y, Color.GREEN);
                     else
-                        writer.setColor(y, x, Color.WHITE);
+                        writer.setColor(x, y, Color.BLACK);
+                    x++;
                 }
+            }
+            else
+            {
+                for (int j = 0; j < 16; j++)
+                {
+                    writer.setColor(x, y, Color.BLACK);
+                    x++;
+                }
+            }
+
+            if (x == 512) {
+                x = 0;
+                y++;
             }
         }
     }
-
-    /**
-     * Sets an array of pixels to gpu memory.
-     */
-    public void in(boolean[] A, int x, int y) { ram[y][x] = A; }
-
 
     /**
      * Connects a screen with gpu.

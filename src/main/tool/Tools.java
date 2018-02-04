@@ -19,26 +19,23 @@ public final class Tools
      * @param code to be converted
      * @return the input as an array of boolean values
      */
-    public static boolean[] toBinary(String code, int length)
+    public static boolean[] toBinary(String code)
     {
-        boolean[] value = new boolean[length];
+        code = code.trim();
 
-        int j = 0;
+        boolean[] result = new boolean[code.length()];
+
         for (int i = 0; i < code.length(); i++)
         {
-            if (code.charAt(i) == '1')
-            {
-                value[j] = true;
-                j++;
-            }
-            else if (code.charAt(i) == '0')
-            {
-                value[j] = false;
-                j++;
-            }
+            result[i] = (code.charAt(i) == '1');
         }
 
-        return value;
+        return result;
+    }
+
+    public static boolean[] toBinary(int decNumber)
+    {
+        return toBinary(toBinaryString(decNumber));
     }
 
     /**
@@ -53,7 +50,7 @@ public final class Tools
         String binString = Integer.toBinaryString(decNumber);
 
         // Add the leading zeroes.
-        for (int i = 1; i < 16 - binString.length(); i++)
+        for (int i = 0; i < 16 - binString.length(); i++)
         {
             result.append('0');
         }
