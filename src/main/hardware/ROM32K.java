@@ -9,11 +9,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Hashtable;
 
+/**
+ *
+ */
 public class ROM32K
 {
     private BufferedReader input;
-    private Hashtable<boolean[], boolean[]> memory = new Hashtable();
+    private Hashtable<boolean[], boolean[]> memory = new Hashtable<>();
 
+    /**
+     *
+     */
     public ROM32K()
     {
         try
@@ -27,6 +33,11 @@ public class ROM32K
         }
     }
 
+    /**
+     *
+     * @param address
+     * @return
+     */
     public boolean[] fetch(boolean[] address) { return memory.get(address); }
 
     // Read the file and put them into memory.

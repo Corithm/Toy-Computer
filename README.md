@@ -1,14 +1,11 @@
 # Toy Computer (Computer Simulator)
-This is an exercise project of building a virtual computer from scratch. The purpose is
-learning about computer itself. Because of experimental nature, I do not recommend this project for commercial use.
+This is an exercise project of building a virtual computer. The purpose is learning about computer itself.
+Because of its experimental nature, I do not recommend this project for commercial use.
+
+Note that this is not implemented straight from logic gates. Sometimes I have decided to replace them with "non-hardware" implementations to see whether the idea works before implementing it the hard way.
 
 ## LICENSE
-Every file included here is public domain (see [The Unlicense](https://choosealicense.com/licenses/unlicense/)).
-Note that, I have not invented many of the technical concepts.
-Therefore, I will not claim any rights related to the inventions.
+The project as whole is licensed under Apache License 2.0. However, some of individual files are under public domain.
 
 ## REFERENCES
-More accurate reference are included in javadoc comments.
-1. [The Elements of Computing Systems - Building a Modern Computer from First Principles](http://nand2tetris.org/book.php)
-2. [Wikipedia/NAND Logic](https://en.wikipedia.org/wiki/NAND_logic)
-3. [Wikipedia/Adder](https://en.wikipedia.org/wiki/Adder_(electronics))
+The primary reference is [The Elements of Computing Systems - Building a Modern Computer from First Principles](http://nand2tetris.org/book.php).

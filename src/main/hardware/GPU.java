@@ -4,8 +4,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
 import main.Screen;
+import main.tool.Binary;
 import main.tool.Tools;
-
 
 /**
  * The book specifies a separate screen chip. But lets call it GPU for now.
@@ -15,31 +15,36 @@ import main.tool.Tools;
  */
 public class GPU
 {
-    // Only access to 16 384 - 24575.
-    // 00100 0000 0000 0000 to 0101 1111 1111 1111
     private Memory memory;
-
     private GraphicsContext gc;
     private PixelWriter writer;
 
-    public GPU(Memory memory) { this.memory = memory; }
     /**
-     * Reads every value from ram and draws them to the screen.
+     * Initialize a new GPU with memory.
+     *
+     * @param memory to read from
+     */
+    public GPU(Memory memory) { this.memory = memory; }
+
+    /**
+     * Reads every value from memory addresses [16_384, 24_576]
+     * and draws their values to the screen.
      */
     public void refresh()
     {
         int y = 0;
         int x = 0;
 
-        for (int i = 16384; i < 24576; i++)
+        for (int address = 16384; address < 24576; address++)
         {
-            boolean[] slice = memory.out(Tools.toBinaryString(i));
-
-            if (slice != null)
+            Binary value = memory.out(address);
+            if (value != null)
             {
-                for (int j = 0; j < 16; j++)
+                boolean[] seq = value.getSequence();
+
+                for (int i = 0; i < 16; i++)
                 {
-                    if (slice[j])
+                    if (seq[i])
                         writer.setColor(x, y, Color.GREEN);
                     else
                         writer.setColor(x, y, Color.BLACK);
@@ -48,7 +53,7 @@ public class GPU
             }
             else
             {
-                for (int j = 0; j < 16; j++)
+                for (int i = 0; i < 16; i++)
                 {
                     writer.setColor(x, y, Color.BLACK);
                     x++;

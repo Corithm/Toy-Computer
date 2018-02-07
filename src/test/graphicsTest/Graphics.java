@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import main.Screen;
 import main.hardware.GPU;
 import main.hardware.Memory;
+import main.tool.Binary;
 import main.tool.Tools;
 
 public class Graphics extends Application
@@ -18,23 +19,23 @@ public class Graphics extends Application
     private void test()
     {
         memory.input(
-                "0100000000100000", // 16 416
-                Tools.toBinary("1111111111111111"),
+                new Binary("0100_0000_0010_0000"), // 16 416
+                new Binary("1111_1111_1111_1111"),
                 true
         );
         memory.input(
-                "0100000001000000", // 16 448
-                Tools.toBinary("1111111111111111"),
+                new Binary("0100_0000_0100_0000"), // 16 448
+                new Binary("1111_1111_1111_1111"),
                 true
         );
         memory.input(
-                "0100000001100000", // 16 480
-                Tools.toBinary("1111111111111111"),
+                new Binary("0100_0000_0110_0000"), // 16 480
+                new Binary("1111_1111_1111_1111"),
                 true
         );
         memory.input(
-                "0100000010000000", // 16 512
-                Tools.toBinary("1111111111111111"),
+                new Binary("0100_0000_1000_0000"), // 16 512
+                new Binary("1111_1111_1111_1111"),
                 true
         );
 

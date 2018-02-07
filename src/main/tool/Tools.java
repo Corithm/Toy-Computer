@@ -8,6 +8,7 @@ import main.hardware.chip.combinational.ALU;
 
 /**
  * Contains tools that aren't really possible in real life implementation.
+ * @deprecated
  */
 public final class Tools
 {

@@ -9,7 +9,6 @@ import java.util.Arrays;
 
 /**
  * CPU implementation.
- * The clock rate is not fixed and changes its value whenever necessary and possible.
  */
 public class CPU
 {
@@ -28,6 +27,12 @@ public class CPU
     private boolean[] dBit;
     private boolean[] jBit;
 
+    /**
+     *
+     * @param inM
+     * @param instruction
+     * @param reset
+     */
     public void input(boolean[] inM, boolean[] instruction, boolean reset)
     {
         decode(instruction);
